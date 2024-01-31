@@ -11,6 +11,11 @@ load("//:target_systems.bzl", "CPU_CONSTRAINT", "TARGET_SYSTEM_NAMES")
 # environment variable must be set.
 # This is a minimal BUILD file to allow non-Android builds to continue.
 
+cc_library(
+    name = "cpufeatures",
+    data = [":error_message"],
+)
+
 # Loop over TARGET_SYSTEM_NAMES and define all empty toolchain targets.
 [toolchain(
     name = "toolchain_%s" % target_system_name,
